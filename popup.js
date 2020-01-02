@@ -47,9 +47,10 @@ function cookieForCreationFromFullCookie(fullCookie) {
 function setCookies(value,currentTabURL){ 
         let domain = getDomain(currentTabURL)
         value.split(';').forEach(item =>{
+          const str = item.trim().split('=');
           const fullCookie = {
-            name:item.split('=')[0],
-            value: escape(item.split('=')[1]),
+            name:str[0],
+            value: escape(str[1]),
             domain:domain,
             url:currentTabURL,
             path:'/'
